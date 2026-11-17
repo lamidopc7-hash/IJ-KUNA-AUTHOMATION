@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I.J. KUNA AUTOMATED BIZZ SYSTEM</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap Theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+  <style type="text/css">
+    body {
+      background-color: #f5f5f0;
+    }
+    .icon-bar {
+      background-color: #fff;
+    }
+    nav a:hover, nav a:active, nav .active a:link, nav .active a:visited {
+      height: 50px;
+      color: #003366;
+      text-decoration: none;
+      background-color: #ebebe0;
+      font-size: 15px;
+    }
+    .dropdown-menu li {
+      background-color: #ebebe0;
+    }
+    .dropdown-menu li a {
+      color: #003366;
+    }
+    .dropdown-menu li a:hover {
+      background-color: #dcdcc6;
+    }
+    .navbar-nav > li {
+      border-right: 1px solid #bbb;
+    }
+    .navbar-nav > li:last-child {
+      border-right: none;
+    }
+    .navbar-nav > li > a {
+      color: #fff;
+    }
+    .card {
+      background-color: #ffffff;
+      margin-top: 65px;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    th {
+      color: #ffffff;
+      background-color: #003366;
+      text-transform: uppercase;
+      font-family: "Times New Roman", Times, serif;
+      padding: 5px;
+      text-align: center;
+    }
+    td {
+      color: #000;
+      padding: 5px;
+    }
+    label {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 18px;
+      color: #003366;
+    }
+    b {
+      font-size: 22px;
+      font-family: "Times New Roman", Times, serif;
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-fixed-top" style="background-color:#003366; color: #fff;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" style="color: #fff; font-weight: bold;">I.J. KUNA BIZZ</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li id="navDashboard"><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Dashboard</a></li>
+
+          <li class="dropdown" id="navSales">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-shopping-cart"></i> Sales <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Walk-in Invoice</a></li>
+              <li><a href="#">All Sales Invoice</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown" id="navCustomer">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> Customers <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">On-Account Invoice</a></li>
+              <li><a href="#">Manage Customers</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown" id="navProduct">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-th"></i> Products <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Manage Product</a></li>
+              <li><a href="#">Added Product Record</a></li>
+              <li><a href="#">Sold Product Record</a></li>
+            </ul>
+          </li>
+
+          <li id="navExpense"><a href="#"><i class="glyphicon glyphicon-book"></i> Expenses</a></li>
+
+          <li class="dropdown" id="navSetting">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-wrench"></i> Settings <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Change Password</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Hi, M LAMIDO <i class="fa fa-power-off"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container / Invoice Form -->
+  <div class="container" style="width: 90%;">
+    <div class="card">
+      <b>Create Invoice for Credit Customer</b>
+      <hr>
+
+      <form method="POST" action="">
+        <div class="form-group row" style="color: #003366; font-size: 16px; font-weight: bold;">
+          <div class="col-sm-2">Store</div>
+          <div class="col-sm-3">Product / Qty</div>
+          <div class="col-sm-2">Quantity</div>
+          <div class="col-sm-2">Sale Price</div>
+          <div class="col-sm-2">Total</div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-2">
+            <select id="store_select" class="form-control" style="height: 37px;">
+              <option value="0">~~ Select ~~</option>
+              <option value="2">TGI STORE</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <select id="product_select" class="form-control" style="height: 37px;">
+              <option value="0">~~ Select Product ~~</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <input type="number" class="form-control" id="quantity" placeholder="Qty" autocomplete="off" min="1" value="1" required>
+          </div>
+          <div class="col-sm-2">
+            <input type="number" class="form-control" id="unit_price" placeholder="Sale Price" required step="0.01" min="0">
+          </div>
+          <div class="col-sm-2">
+            <input type="text" class="form-control" id="total" placeholder="Total" readonly>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 20px;">
+          <div class="col-sm-12 text-center">
+            <button type="button" id="add_to_cart" class="btn btn-primary"><i class="fa fa-plus"></i> Add to Cart</button>
+          </div>
+        </div>
+
+        <legend><b>List of Orders</b></legend>
+        <table class="table table-bordered table-striped" style="font-size: 13px;">
+          <thead>
+            <tr>
+              <th width="5%">S/N</th>
+              <th width="55%">PRODUCT</th>
+              <th width="10%">QTY</th>
+              <th width="10%">UNIT PRICE</th>
+              <th width="10%">AMOUNT</th>
+              <th width="10%">Action</th>
+            </tr>
+          </thead>
+          <tbody id="order_table_body">
+            <tr>
+              <td colspan="6" class="text-center">No data available in table</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Totals & Payment Section -->
+        <div class="row" style="margin-top: 20px;">
+          <div class="col-md-6 col-md-offset-6 text-right">
+
+            <div class="form-group">
+              <label>Total Amount:</label>
+              <input type="text" id="tretail1" class="form-control" value="0.00" readonly style="display: inline-block; width: 250px; font-weight: bold; color: #008040;">
+            </div>
+
+            <div class="form-group">
+              <label>Amount Paid:</label>
+              <input type="number" id="advanced_amount" class="form-control" value="0" style="display: inline-block; width: 250px; font-weight: bold; color: #008040;" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label>Discount:</label>
+              <input type="number" id="view_discount" class="form-control" value="0" style="display: inline-block; width: 250px; font-weight: bold; color: #008040;" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label>Mode Of Payment:</label><br>
+              <label class="radio-inline"><input type="radio" name="remark" value="0" required> Cash</label>
+              <label class="radio-inline"><input type="radio" name="remark" value="1"> Bank</label>
+              <label class="radio-inline"><input type="radio" name="remark" value="3"> POS</label>
+              <label class="radio-inline"><input type="radio" name="remark" value="2"> Credit</label>
+            </div>
+
+            <div class="form-group">
+              <label>Select Customer:</label><br>
+              <input list="customer_name" class="form-control" style="display: inline-block; width: 250px;" autocomplete="off">
+              <datalist id="customer_name">
+                <option value="AHMAD TERRA, JAURO KUNA">
+                <option value="MAIN SHOP JAURO KUNA, MAIN MARKET GOMBE">
+                <option value="HAGGAI KEFAS, MALAN INNA">
+                <option value="JUSTINA ISHAKU, TUMFURE">
+                <option value="MR MELA CHIROMA, TUNFURE">
+              </datalist>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+              <button type="submit" class="btn btn-primary" style="width: 200px; height: 40px;" onclick="return confirm('Are you sure to Submit this Invoice?')">
+                <i class="fa fa-save"></i> Submit
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <script>
+    const products = [
+      { id: 'rice', name: 'Rice 25kg', price: 18000 },
+      { id: 'oil', name: 'Cooking Oil 4L', price: 5200 },
+      { id: 'beans', name: 'Beans 5kg', price: 6500 },
+      { id: 'maize', name: 'Maize Flour', price: 4200 },
+      { id: 'sugar', name: 'Sugar 10kg', price: 9500 },
+      { id: 'spaghetti', name: 'Spaghetti Pack', price: 1800 }
+    ];
+
+    const productSelect = document.getElementById('product_select');
+    const quantityInput = document.getElementById('quantity');
+    const unitPriceInput = document.getElementById('unit_price');
+    const lineTotalInput = document.getElementById('total');
+    const orderTableBody = document.getElementById('order_table_body');
+    const addToCartButton = document.getElementById('add_to_cart');
+    const totalAmountInput = document.getElementById('tretail1');
+    const advancedAmountInput = document.getElementById('advanced_amount');
+    const discountInput = document.getElementById('view_discount');
+
+    let orderItems = [];
+
+    function formatMoney(value) {
+      return new Intl.NumberFormat('en-NG', {
+        style: 'currency',
+        currency: 'NGN',
+        minimumFractionDigits: 2
+      }).format(value || 0);
+    }
+
+    function populateProducts() {
+      productSelect.innerHTML = '<option value="0">~~ Select Product ~~</option>' +
+        products.map(product => `<option value="${product.id}">${product.name}</option>`).join('');
+    }
+
+    function calculateLineTotal() {
+      const qty = Number(quantityInput.value) || 0;
+      const price = Number(unitPriceInput.value) || 0;
+      const total = qty * price;
+      lineTotalInput.value = total.toFixed(2);
+      return total;
+    }
+
+    function renderOrderTable() {
+      if (!orderItems.length) {
+        orderTableBody.innerHTML = '<tr><td colspan="6" class="text-center">No data available in table</td></tr>';
+        totalAmountInput.value = '0.00';
+        return;
+      }
+
+      orderTableBody.innerHTML = orderItems.map((item, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${item.name}</td>
+          <td>${item.qty}</td>
+          <td>${formatMoney(item.price)}</td>
+          <td>${formatMoney(item.qty * item.price)}</td>
+          <td><button type="button" class="btn btn-danger btn-xs remove-item" data-index="${index}"><i class="fa fa-trash"></i> Remove</button></td>
+        </tr>
+      `).join('');
+
+      const subtotal = orderItems.reduce((total, item) => total + (item.qty * item.price), 0);
+      totalAmountInput.value = subtotal.toFixed(2);
+
+      document.querySelectorAll('.remove-item').forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const index = Number(event.currentTarget.dataset.index);
+          orderItems.splice(index, 1);
+          renderOrderTable();
+        });
+      });
+    }
+
+    function updateTotals() {
+      const subtotal = orderItems.reduce((total, item) => total + (item.qty * item.price), 0);
+      const discount = Number(discountInput.value) || 0;
+      const paid = Number(advancedAmountInput.value) || 0;
+      totalAmountInput.value = subtotal.toFixed(2);
+
+      const due = Math.max(subtotal - discount, 0);
+      const balance = Math.max(due - paid, 0);
+      const balanceField = document.getElementById('balance_due');
+      if (balanceField) {
+        balanceField.value = formatMoney(balance);
+      }
+    }
+
+    productSelect.addEventListener('change', (event) => {
+      const selectedProduct = products.find(product => product.id === event.target.value);
+      if (selectedProduct) {
+        unitPriceInput.value = selectedProduct.price;
+        quantityInput.value = 1;
+        calculateLineTotal();
+      } else {
+        unitPriceInput.value = '';
+        lineTotalInput.value = '';
+      }
+    });
+
+    quantityInput.addEventListener('input', calculateLineTotal);
+    unitPriceInput.addEventListener('input', calculateLineTotal);
+    advancedAmountInput.addEventListener('input', updateTotals);
+    discountInput.addEventListener('input', updateTotals);
+
+    addToCartButton.addEventListener('click', () => {
+      const selectedProductId = productSelect.value;
+      const selectedProduct = products.find(product => product.id === selectedProductId);
+      const qty = Number(quantityInput.value);
+      const price = Number(unitPriceInput.value);
+
+      if (!selectedProduct || selectedProductId === '0') {
+        alert('Please select a valid product.');
+        return;
+      }
+
+      if (!qty || qty <= 0) {
+        alert('Please enter a valid quantity.');
+        return;
+      }
+
+      if (!price || price <= 0) {
+        alert('Please enter a valid sale price.');
+        return;
+      }
+
+      orderItems.push({
+        id: selectedProduct.id,
+        name: selectedProduct.name,
+        qty,
+        price
+      });
+
+      renderOrderTable();
+      updateTotals();
+
+      productSelect.value = '0';
+      quantityInput.value = 1;
+      unitPriceInput.value = '';
+      lineTotalInput.value = '';
+    });
+
+    document.querySelector('form').addEventListener('submit', (event) => {
+      if (!orderItems.length) {
+        event.preventDefault();
+        alert('Please add at least one product before submitting the invoice.');
+        return;
+      }
+
+      const paid = Number(advancedAmountInput.value) || 0;
+      const discount = Number(discountInput.value) || 0;
+      const subtotal = orderItems.reduce((total, item) => total + (item.qty * item.price), 0);
+      const totalDue = Math.max(subtotal - discount, 0);
+
+      if (paid < 0 || discount < 0) {
+        event.preventDefault();
+        alert('Payment and discount values cannot be negative.');
+        return;
+      }
+
+      const response = confirm('Are you sure to Submit this Invoice?');
+      if (!response) {
+        event.preventDefault();
+      } else {
+        alert(`Invoice submitted successfully. Total due: ${formatMoney(totalDue)}`);
+      }
+    });
+
+    populateProducts();
+    renderOrderTable();
+    updateTotals();
+  </script>
+
+</body>
+</html>
